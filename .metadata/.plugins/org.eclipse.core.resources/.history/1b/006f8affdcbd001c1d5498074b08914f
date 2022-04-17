@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	printf("Hola");
+	system("pause");
+	return EXIT_SUCCESS;
+}
