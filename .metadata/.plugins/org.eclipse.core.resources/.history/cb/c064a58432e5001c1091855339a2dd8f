@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+#define TAM 3
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+	sConsulta Consulta[TAM]={{123,"Enru",{1,12,2022},1,123,1},
+							 {456,"Martu",{2,8,2023},2,456,1},
+							 {789,"Gonza",{28,7,2024},3,789,1}};
+	int opcion;
+	int retorno;
+
+	initConsulta(Consulta, TAM);
+
+	do
+	{
+		limpiar();
+		printf("Ingrese una opcion:\n"
+				"1_ Alta consulta.\n"
+				"2_ Modificar consulta.\n"
+				"3_ Cancelar consulta.\n"
+				"4_ Diagnosticar.\n"
+				"5_ Listar.\n"
+				"6_ Salir.");
+		scanf("%d",&opcion);
+		opcion=validarEntero(opcion, 1, 6);
+
+		switch(opcion)
+		{
+			case 1:
+				limpiar();
+
+				retorno=altaConsulta(Consulta, TAM);
+
+				if(retorno!=-1)
+				{
+					printf("Carga exitosa.\n");
+				}
+				else
+				{
+					printf("No hay lugar para una nueva consulta.\n");
+				}
+
+				system("pause");
+				break;
+
+			case 2:
+				limpiar();
+
+				modificarConsulta(Consulta, TAM);
+
+				system("pause");
+				break;
+
+			case 3:
+				limpiar();
+
+				printf("Cancelar consulta.\n");
+
+				system("pause");
+				break;
+
+			case 4:
+				limpiar();
+
+				printf("Diagnosticar.\n");
+
+				system("pause");
+				break;
+
+			case 5:
+				limpiar();
+
+				printConsultas(Consulta, TAM);
+
+				system("pause");
+				break;
+
+		}
+
+
+	}while(opcion!=6);
+
+	limpiar();
+	printf("------CONSOLA APAGADA------");
+
+	return 0;
+}
+
+

@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+static int idProgresivo=100;
+
+void limpiar()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+int idProgresive()
+{
+	idProgresivo++;
+
+	return idProgresivo;
+}
+
+int altaConsulta(sConsulta Consulta[], int size)
+{
+	int j;
+
+	j=buscarLibre(Consulta, size);
+
+	if(j!=-1)
+	{
+		Consulta[j]=cargarConsulta();
+	}
+
+	return j;
+}
+
+int buscarLibre(sConsulta Consulta[], int size)
+{
+	int j;
+	j=-1;
+
+	for(int i=0; i<size; i++)
+	{
+		if(Consulta[i].isEmpty==VACIO)
+		{
+			j=i;
+			break;
+		}
+	}
+
+	return j;
+}
+
+

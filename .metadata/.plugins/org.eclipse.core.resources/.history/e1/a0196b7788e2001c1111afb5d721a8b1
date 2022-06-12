@@ -1,0 +1,41 @@
+#ifndef MEDICOS_H_
+#define MEDICOS_H_
+#define VACIO 0
+#define LLENO 1
+
+typedef struct
+{
+	int idMedico;
+	char nombreMedico[50];
+	char especialidad[20];
+
+}sMedico;
+
+typedef struct
+{
+	int dia;
+	int mes;
+	int anio;
+
+}sFecha;
+
+typedef struct
+{
+	int idConsulta;
+	char nombrePaciente[50];
+	sFecha fechaConsulta;
+	int diagnostico;
+	int idMedico;
+	int isEmpty;
+
+}sConsulta;
+
+
+
+sConsulta cargarConsulta();
+void limpiar();
+int idProgresive();
+int altaConsulta(sConsulta Consulta[], int size);
+int buscarLibre(sConsulta Consulta[], int size);
+
+#endif /* MEDICOS_H_ */

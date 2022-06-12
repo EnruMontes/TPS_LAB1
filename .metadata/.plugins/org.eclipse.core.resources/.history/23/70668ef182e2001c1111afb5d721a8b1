@@ -1,0 +1,37 @@
+#ifndef MEDICOS_H_
+#define MEDICOS_H_
+
+typedef struct
+{
+	int idMedico;
+	char nombreMedico[50];
+	char especialidad[20];
+
+}Medico;
+
+typedef struct
+{
+	int dia;
+	int mes;
+	int anio;
+
+}Fecha;
+
+typedef struct
+{
+	int idConsulta;
+	char nombrePaciente[50];
+	Fecha fechaConsulta;
+	int diagnostico;
+	int idMedico;
+	int isEmpty;
+
+}Consulta;
+
+
+
+Consulta cargarConsulta();
+void limpiar();
+
+
+#endif /* MEDICOS_H_ */

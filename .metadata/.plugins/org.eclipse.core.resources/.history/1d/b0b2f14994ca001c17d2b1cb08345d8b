@@ -1,0 +1,241 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones.h"
+
+
+void limpiar()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+sApple cargarProducto()
+{
+	sApple miApple;
+
+	printf("Ingrese el ID del producto: ");
+	scanf("%d",&miApple.idProducto);
+	printf("Ingrese la descripcion del producto: ");
+	fflush(stdin);
+	gets(miApple.descripcion);
+	printf("Ingrese la nacionalidad del producto: (EEUU-10 CHINA-20 OTRO-30)");
+	scanf("%d",&miApple.nacionalidad);
+	printf("Ingrese el tipo de producto: (IPHONE-100 MAC-200 IPAD-300 ACCESORIOS-400)");
+	scanf("%d",&miApple.tipo);
+	printf("Ingrese el precio del producto: ");
+	scanf("%f",&miApple.precio);
+	miApple.estado = LLENO;
+
+	return miApple;
+}
+
+int altaProducto(sApple miApple[], int size)
+{
+	int j;
+	j = buscarLibre(miApple, size);
+
+	if(j!=-1)
+	{
+		miApple[j]=cargarProducto();
+	}
+
+	return j;
+}
+
+int buscarLibre(sApple miApple[], int size)
+{
+	int j;
+	j=-1;
+
+	for(int i=0;i<size;i++)
+	{
+		if(miApple[i].estado==VACIO)
+		{
+			j=i;
+			break;
+		}
+	}
+
+	return j;
+}
+
+void bajaProducto(sApple miApple[],int size)
+{
+	int idProducto;
+	int flag;
+	flag=0;
+
+	printf("Ingrese el ID del producto que quiere eliminar: ");
+	scanf("%d",&idProducto);
+
+	for(int i=0;i<size;i++)
+	{
+		if(miApple[i].estado==LLENO && miApple[i].idProducto==idProducto)
+		{
+			miApple[i].estado=VACIO;
+			printf("Producto dado de baja correctamente\n");
+			flag=1;
+		}
+	}
+
+	if(flag==0)
+	{
+		printf("No se encontro el ID\n");
+	}
+}
+
+void modificarProducto(sApple miApple[],int size)
+{
+	int idProducto;
+	int modificacion;
+
+	idProducto=validacionIdProducto(miApple,size);
+
+	printf("Que quiere modificar? Precio-1 o Tipo-2");
+	scanf("%d",&modificacion);
+
+	switch(modificacion)
+	{
+		case 1:
+			for(int i=0;i<size;i++)
+			{
+				if(miApple[i].idProducto==idProducto)
+				{
+					printf("Ingrese el nuevo precio: ");
+					scanf("%f",&miApple[i].precio);
+				}
+			}
+			break;
+
+		case 2:
+			for(int i=0;i<size;i++)
+			{
+				if(miApple[i].idProducto==idProducto)
+				{
+					printf("Ingrese el nuevo tipo: (IPHONE-100 MAC-200 IPAD-300 ACCESORIOS-400)");
+					scanf("%d",&miApple[i].tipo);
+				}
+			}
+			break;
+	}
+
+}
+
+int validacionIdProducto(sApple miApple[], int size)
+{
+	int id;
+	int flag;
+
+	printf("Ingrese el ID del producto que quiere modificar: ");
+	scanf("%d",&id);
+
+	while(flag==0)
+	{
+		for(int i=0;i<size;i++)
+		{
+			if(miApple[i].idProducto==id)
+			{
+				flag=1;
+			}
+		}
+		if(flag==0)
+		{
+			printf("No existe el ID que ingreso, ingrese nuevamente el ID: ");
+			scanf("%d",&id);
+		}
+	}
+
+	return id;
+}
+
+void listadoProducto(sApple miApple[],int size)
+{
+	for(int i=0;i<size;i++)
+	{
+		if(miApple[i].estado==LLENO)
+		{
+			mostrarProducto(miApple[i]);
+		}
+	}
+}
+
+void mostrarProducto(sApple miApple)
+{
+	printf("%-4d|",miApple.idProducto);
+	printf("%4s|",miApple.descripcion);
+	switch(miApple.nacionalidad)
+	{
+		case 10:
+			printf("EEUU|");
+			break;
+
+		case 20:
+			printf("CHINA|");
+			break;
+
+		case 30:
+			printf("Otro|");
+			break;
+	}
+	switch(miApple.tipo)
+	{
+		case 100:
+			printf("Iphone|");
+			break;
+
+		case 200:
+			printf("MAC|");
+			break;
+
+		case 300:
+			printf("Ipad|");
+			break;
+
+		case 400:
+			printf("Accesorio|");
+			break;
+	}
+	printf("%7.2f\n",miApple.precio);
+}
+
+void ordenamientoDecrecientePrecio(sApple miApple[],int size)
+{
+   sApple auxiliar;
+
+   for(int i=0;i<size;i++)
+   {
+      for(int j=i+1;j<size;j++)
+      {
+         if(miApple[i].precio<miApple[j].precio)
+         {
+            auxiliar=miApple[i];
+            miApple[i]=miApple[j];
+            miApple[j]=auxiliar;
+         }
+      }
+   }
+}
+
+void ordenamientoPorDescripcion(sApple miApple[],int size)
+{
+	sApple auxiliar;
+
+	for(int i=0; i<size; i++)
+	{
+		for(int j=i+1;j<size;j++)
+		{
+			if(strcmp(miApple[i].descripcion, miApple[j].descripcion)>0)
+			{
+				auxiliar=miApple[i];
+				miApple[i]=miApple[j];
+				miApple[j]=auxiliar;
+			}
+		}
+	}
+}
+
+
+
+
+
+

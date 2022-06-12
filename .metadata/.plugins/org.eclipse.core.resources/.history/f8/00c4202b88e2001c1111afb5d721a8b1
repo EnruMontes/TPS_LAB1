@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+	int opcion;
+
+	do
+	{
+		limpiar();
+		printf("Ingrese una opcion:\n"
+				"1_ Alta consulta.\n"
+				"2_ Modificar consulta.\n"
+				"3_ Cancelar consulta.\n"
+				"4_ Diagnosticar.\n"
+				"5_ Listar.\n"
+				"6_ Salir.");
+		scanf("%d",&opcion);
+
+		switch(opcion)
+		{
+			case 1:
+				limpiar();
+
+				printf("Alta consulta.\n");
+
+				system("pause");
+				break;
+
+			case 2:
+				limpiar();
+
+				printf("Modificar consulta.\n");
+
+				system("pause");
+				break;
+
+			case 3:
+				limpiar();
+
+				printf("Cancelar consulta.\n");
+
+				system("pause");
+				break;
+
+			case 4:
+				limpiar();
+
+				printf("Diagnosticar.\n");
+
+				system("pause");
+				break;
+
+			case 5:
+				limpiar();
+
+				printf("Listar.\n");
+
+				system("pause");
+				break;
+
+		}
+
+
+	}while(opcion!=6);
+
+	limpiar();
+	printf("------CONSOLA APAGADA------");
+
+	return 0;
+}
+
+

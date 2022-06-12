@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+
+
+	return 0;
+}
+
+

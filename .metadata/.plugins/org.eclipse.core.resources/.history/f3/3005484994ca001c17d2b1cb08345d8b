@@ -1,0 +1,36 @@
+#ifndef FUNCIONES_H_
+#define FUNCIONES_H_
+#define VACIO 0
+#define LLENO 1
+#define EEUU 10
+#define CHINA 20
+#define OTRO 30
+#define IPHONE 100
+#define MAC 200
+#define IPAD 300
+#define ACCESORIOS 400
+
+typedef struct
+{
+	int idProducto;
+	char descripcion[20];
+	int nacionalidad;
+	int tipo;
+	float precio;
+	int estado;
+
+}sApple;
+
+sApple cargarProducto();
+void limpiar();
+int altaProducto(sApple[], int);
+int buscarLibre(sApple[], int);
+void bajaProducto(sApple[],int);
+void modificarProducto(sApple[],int);
+int validacionIdProducto(sApple[], int);
+void listadoProducto(sApple[],int);
+void mostrarProducto(sApple);
+void ordenamientoDecrecientePrecio(sApple[],int);
+void ordenamientoPorDescripcion(sApple[],int);
+
+#endif /* FUNCIONES_H_ */

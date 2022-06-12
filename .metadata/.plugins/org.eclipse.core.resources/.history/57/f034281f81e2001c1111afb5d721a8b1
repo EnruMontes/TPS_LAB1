@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+
+Consulta cargarConsulta()
+{
+	Consulta sConsultas;
+
+	printf("Ingrese el ID de la consulta: ");
+	scanf("%d",&sConsultas.idConsulta);
+	printf("Ingrese el nombre del paciente: ");
+	fflush(stdin);
+	gets(sConsultas.nombrePaciente);
+
+	return sConsultas;
+}

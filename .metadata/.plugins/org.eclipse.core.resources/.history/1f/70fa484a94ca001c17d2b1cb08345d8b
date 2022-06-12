@@ -1,0 +1,93 @@
+/* Enrico Montes
+Div C
+Ejercicio 8-2
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones.h"
+#define TAM 5
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+	sApple miApple[TAM];
+	int opcion;
+	int retorno;
+
+	for(int i=0;i<TAM;i++)
+	{
+		miApple[i].estado = VACIO;
+	}
+
+	do
+	{
+		limpiar();
+		printf("Seleccione una opcion:\n"
+				"1_ Alta de producto.\n"
+				"2_ Baja de producto.\n"
+				"3_ Modificacion de producto.\n"
+				"4_ Listado de productos.\n"
+				"5_ Listado ordenado por precio.\n"
+				"6_ Listado ordenado por descripcion.\n"
+				"7_ Salir.\n"
+				"");
+		scanf("%d",&opcion);
+
+		switch(opcion)
+		{
+			case 1:
+				limpiar();
+				retorno = altaProducto(miApple,TAM);
+
+				switch(retorno)
+				{
+					case -1:
+						printf("No hay espacio disponible.\n");
+						break;
+
+					default:
+						printf("Carga exitosa.\n");
+						break;
+				}
+				system("pause");
+				break;
+			case 2:
+				limpiar();
+				bajaProducto(miApple,TAM);
+				system("pause");
+				break;
+			case 3:
+				limpiar();
+				modificarProducto(miApple,TAM);
+				system("pause");
+				break;
+			case 4:
+				limpiar();
+				listadoProducto(miApple,TAM);
+				system("pause");
+				break;
+			case 5:
+				limpiar();
+				ordenamientoDecrecientePrecio(miApple,TAM);
+				listadoProducto(miApple,TAM);
+				system("pause");
+				break;
+			case 6:
+				limpiar();
+				ordenamientoPorDescripcion(miApple,TAM);
+				listadoProducto(miApple,TAM);
+				system("pause");
+				break;
+		}
+
+
+	}while(opcion!=7);
+
+	return 0;
+}
+
+
+

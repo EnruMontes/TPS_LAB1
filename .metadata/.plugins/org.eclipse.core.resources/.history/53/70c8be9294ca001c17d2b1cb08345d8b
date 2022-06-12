@@ -1,0 +1,22 @@
+/* Enrico Montes
+Div C
+Ejercicio 8-2
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones.h"
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+
+
+
+	return 0;
+}
+
+
+

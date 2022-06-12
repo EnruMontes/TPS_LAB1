@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+
+Consulta cargarConsulta()
+{
+	Consulta sConsultas;
+
+	printf("Ingrese el nombre del paciente: ");
+	fflush(stdin);
+	gets(sConsultas.nombrePaciente);
+	printf("Ingrese el dia de la consulta: ");
+	scanf("%d",&sConsultas.fechaConsulta.dia);
+	printf("Ingrese el mes de la consulta: ");
+	scanf("%d",&sConsultas.fechaConsulta.mes);
+	printf("Ingrese el año de la consulta: ");
+	scanf("%d",&sConsultas.fechaConsulta.anio);
+	printf("Ingrese el diagnostico: (1-Gripe A, 2-Covid-19, 3-Pre infarto)");
+	scanf("%d",&sConsultas.diagnostico);
+	printf("Ingrese el ID del medico: ");
+	scanf("%d",&sConsultas.idMedico);
+	sConsultas.idConsulta=idProgresive();
+	sConsultas.isEmpty=LLENO;
+
+	return sConsultas;
+}

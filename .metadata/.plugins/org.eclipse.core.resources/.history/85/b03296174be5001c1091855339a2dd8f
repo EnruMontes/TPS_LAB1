@@ -1,0 +1,178 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Medicos.h"
+static int idProgresivo=100;
+
+void limpiar()
+{
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+int idProgresive()
+{
+	idProgresivo++;
+
+	return idProgresivo;
+}
+
+int initConsulta(sConsulta Consulta[], int size)
+{
+	int j;
+	j=-1;
+
+	for(int i=0; i<size; i++)
+	{
+		Consulta[i].isEmpty=VACIO;
+		j=0;
+	}
+
+	return j;
+}
+
+int altaConsulta(sConsulta Consulta[], int size)
+{
+	int j;
+
+	j=buscarLibre(Consulta, size);
+
+	if(j!=-1)
+	{
+		Consulta[j]=cargarConsulta();
+	}
+
+	return j;
+}
+
+int buscarLibre(sConsulta Consulta[], int size)
+{
+	int j;
+	j=-1;
+
+	for(int i=0; i<size; i++)
+	{
+		if(Consulta[i].isEmpty==VACIO)
+		{
+			j=i;
+			break;
+		}
+	}
+
+	return j;
+}
+
+
+int modificarConsulta(sConsulta Consulta[], int size)
+{
+	int ok;
+	int posicion;
+	int modificacion;
+	ok=0;
+
+	posicion=buscarIdConsulta(Consulta,size);
+
+	printf("Seleccione que se quiere modificar: \n"
+			"1_ Nombre del paciente.\n"
+			"2_ Fecha de consulta.\n"
+			"3_ Medico.\n");
+	scanf("%d",&modificacion);
+	modificacion=validarEntero(modificacion, 1, 3);
+
+	switch(modificacion)
+	{
+		case 1:
+			limpiar();
+
+			for (int i=0; i<size; i++)
+			{
+				if(i==posicion)
+				{
+					printf("Ingrese el nuevo nombre del paciente: ");
+					fflush(stdin);
+					gets(Consulta[i].nombrePaciente);
+					stringCorrecto(Consulta[i].nombrePaciente, "nombre");
+					ok=1;
+
+					break;
+				}
+			}
+			break;
+
+		case 2:
+			limpiar();
+
+			for(int i=0; i<size; i++)
+			{
+				if(i==posicion)
+				{
+					printf("Ingrese la nueva fecha de consulta:\n"
+							"Ingrese el nuevo dia: ");
+					scanf("%d",&Consulta[i].fechaConsulta.dia);
+					validarEntero(Consulta[i].fechaConsulta.dia, 1, 31);
+
+					printf("Ingrese el nuevo mes: ");
+					scanf("%d",&Consulta[i].fechaConsulta.mes);
+					validarEntero(Consulta[i].fechaConsulta.mes, 1, 12);
+
+					printf("Ingrese el nuevo año: ");
+					scanf("%d",&Consulta[i].fechaConsulta.anio);
+					validarEntero(Consulta[i].fechaConsulta.anio, 2022, 2024);
+					ok=1;
+
+					break;
+				}
+			}
+			break;
+
+		case 3:
+			limpiar();
+
+			for(int i=0; i<size; i++)
+			{
+				if(i==posicion)
+				{
+					printf("Ingrese el nuevo Id del medico: ");
+					scanf("%d",&Consulta[i].idMedico);
+					ok=1;
+
+					break;
+				}
+			}
+			break;
+	}
+
+	return ok;
+}
+
+int buscarIdConsulta(sConsulta Consulta[], int size)
+{
+	int id;
+	int posicion;
+	posicion=-1;
+
+	printf("Ingrese el Id de la consulta que se quiere modificar: ");
+	scanf("%d",&id);
+
+	for(int i=0; i<size; i++)
+	{
+		if(Consulta[i].idConsulta==id)
+		{
+			posicion=i;
+			break;
+		}
+	}
+
+	return posicion;
+}
+
+
+
+
+
+
+
+
+
+
+
+

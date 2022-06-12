@@ -1,0 +1,29 @@
+/* Enrico Montes
+Div C
+Ejercicio 8-2
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones.h"
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+	char a[10]="Enrico";
+	//char b[10]="enrico";
+	//char c[10]="Magui";
+	char d[10]="Pablo";
+	//char e[10]="Graciela";
+
+	int caca=strcmp(a,d);
+
+	printf("%d",caca);
+
+	return 0;
+}
+
+
+
