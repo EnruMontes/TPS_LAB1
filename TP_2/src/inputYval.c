@@ -75,6 +75,7 @@ int validarInt(int numero, int menor, int mayor)
 
 int validarString(char string[])
 {
+
     int ok;
     ok = 1;
 

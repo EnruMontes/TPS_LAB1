@@ -1,15 +1,8 @@
-20:24:40 **** Rebuild of configuration Debug for project TP_1 ****
+21:57:29 **** Rebuild of configuration Debug for project TP_3 ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_1.o" "..\\src\\TP_1.c" 
-gcc -o TP_1.exe "src\\TP_1.o" 
-Info: Nothing to build for TP_1
-20:26:41 **** Incremental Build of configuration Debug for project TP_1 ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_1.o" "..\\src\\TP_1.c" 
-gcc -o TP_1.exe "src\\TP_1.o" 
-20:29:13 **** Incremental Build of configuration Debug for project TP_1 ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\funciones.o" "..\\src\\funciones.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_1.o" "..\\src\\TP_1.c" 
-gcc -o TP_1.exe "src\\TP_1.o" "src\\funciones.o" 
-Info: Nothing to build for TP_1
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Parser.o "..\\Parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Passenger.o "..\\Passenger.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Controller.o "..\\Controller.c" 
+gcc "-LE:\\Users\\Enru\\Downloads\\OneDrive\\Escritorio\\LAB_1\\TP_3" -o TP_3.exe Controller.o Parser.o Passenger.o main.o -lLinkedList 
+Info: Nothing to build for TP_3
